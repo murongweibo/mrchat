@@ -17,6 +17,6 @@ from pychatgpt import Chat, Options
 chat = Chat(email=email, password=password) 
 input_txt = st.text_area("请输入你的问题：")
 
-if value:
+if input_txt:
     answer = chat.ask(input_txt)
     st.markdown(answer)
