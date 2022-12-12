@@ -12,11 +12,11 @@ password = st.secrets["password"]
 from pychatgpt import Chat
 from pychatgpt import Chat, Options
 
-options.chat_log = f"chat_log.txt"
-options.id_log = f"id_log.txt"
+Options.chat_log = f"chat_log.txt"
+Options.id_log = f"id_log.txt"
 
 # Initializing the chat class will automatically log you in, check access_tokens
-chat = Chat(email=email, password=password, options = options) 
+chat = Chat(email=email, password=password, options = Options) 
 input_txt = st.text_area("请输入你的问题：")
 
 if input_txt:
