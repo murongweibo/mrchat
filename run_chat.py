@@ -1,6 +1,7 @@
 import time
 from pychatgpt import OpenAI
 
+from loguru import logger
 import streamlit as st
 email = st.secrets["email"]
 password = st.secrets["password"]
@@ -11,12 +12,16 @@ password = st.secrets["password"]
 from pychatgpt import Chat
 from pychatgpt import Chat, Options
 
-
+options.chat_log = f"chat_log.txt"
+options.id_log = f"id_log.txt"
 
 # Initializing the chat class will automatically log you in, check access_tokens
-chat = Chat(email=email, password=password) 
+chat = Chat(email=email, password=password, options = options) 
 input_txt = st.text_area("请输入你的问题：")
 
 if input_txt:
+    logger.info(f"你的问题是：{input_txt}")
+    logger.info(f"正在提问：")
     answer = chat.ask(input_txt)
+    logger.info(f"你的答案是：{answer}")
     st.markdown(answer)
